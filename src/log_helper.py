@@ -1,12 +1,13 @@
-'log_helper.py'
+"""log_helper.py"""
 
 from datetime import datetime
 import json
 import csvmapper
 from locustor_config import LocustorConfig
 
+
 class LogHelper:
-    'Log helper is responsible for parsing the Locust CSV output to JSON format.'
+    """Log helper is responsible for parsing the Locust CSV output to JSON format."""
     locust_csv_fields = ('Method', 'Name', '# requests', '# failures', 'Median response time',
                          'Average response time', 'Min response time', 'Max response time',
                          'Average Content Size', 'Requests/s')
@@ -18,7 +19,7 @@ class LogHelper:
             raise Exception('LOCUST_CSV_LOG_FILE_PATH cannot be empty!')
 
     def parse_log_to_json(self, log_path):
-        'Parse CSV log file and return JSON string.'
+        """Parse CSV log file and return JSON string."""
         parser = csvmapper.CSVParser(log_path,
                                      csvmapper.mapper.FieldMapper(self.locust_csv_fields),
                                      hasHeader=True)
@@ -27,7 +28,7 @@ class LogHelper:
         return json_converter.doConvert(pretty=False)
 
     def prepare_influx_insert_query(self, log):
-        'Map json result to influx insert query.'
+        """Map json result to influx insert query."""
         json_result = []
 
         for json_log in json.loads(log):
