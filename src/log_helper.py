@@ -4,7 +4,6 @@ from datetime import datetime
 import json
 import csvmapper
 from locustor_config import LocustorConfig
-from time import strftime, gmtime, localtime
 
 
 class LogHelper:
@@ -39,7 +38,7 @@ class LogHelper:
                     "host": LocustorConfig.HOST,
                     "region": LocustorConfig.REGION
                 },
-                "time": strftime('%Y-%m-%dT%H:%M:%SZ', localtime()),
+                "time": datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
                 "fields": {
                     "Method": json_log['Method'],
                     "Name": json_log['Name'],
