@@ -11,7 +11,7 @@ class LogRepository:
 
     def __init__(self):
         locustor_config = LocustorConfig()
-        self.influx_client = InfluxDBClient(locustor_config.INFLUXDB_H,
+        self.influx_client = InfluxDBClient(locustor_config.INFLUXDB_HOST,
                                             locustor_config.INFLUXDB_PORT,
                                             locustor_config.INFLUXDB_USER_NAME,
                                             locustor_config.INFLUXDB_PASSWORD,
