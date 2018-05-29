@@ -9,6 +9,6 @@ class LocustorConfig:
     INFLUXDB_PASSWORD = ''
     INFLUXDB_DATABASE = ''
     DELAY_IN_SEC = 5
-    LOCUST_CSV_LOG_FILE_PATH = './result_requests.csv'
+    LOCUST_CSV_LOG_FILE_PATH = '/home/emre/testresult_requests.csv'
     HOST = ''
     REGION = ''
